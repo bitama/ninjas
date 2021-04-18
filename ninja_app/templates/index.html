@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+</head>
+<body>
+    <div class="h1">
+        <h1 class="title">NINJA GOLD</h1>
+        <h2> Your gold is :{{request.session.gold}}</h2>
+    </div>
+    <div id="form">
+        <div class="farm">
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <h1>Farm</h1>
+                <input type="hidden" name="location" value="Farm" class="hidden">
+                <input type="submit" value="Find gold" class="btn">
+            </form>
+        </div>
+        <div class="farm">
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <h1>Cave</h1>
+                <input type="hidden" name="location" value="Cave" class="hidden">
+                <input type="submit" value="Find gold" class="btn">
+            </form>
+        </div>
+        <div class="farm">
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <h1>House</h1>
+                <input type="hidden" name="location" value="House" class="hidden">
+                <input type="submit" value="Find gold" class="btn">
+            </form>
+        </div>
+        <div class="farm">
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <h1>Cassino</h1>
+                <input type="hidden" name="location" value="Cassino" class="hidden">
+                <input type="submit" value="Find gold" class="btn">
+            </form>
+        </div>
+    </div>
+    <div class="activity">
+        <h1>Activities</h1>
+        {% for activity in request.session.activities %}
+        <p>{{activity}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
